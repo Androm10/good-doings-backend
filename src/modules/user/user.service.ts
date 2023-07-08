@@ -66,4 +66,8 @@ export class UserService {
     }
     return await this.userRepository.assignRole(user.id, 'USER');
   }
+
+  async isFriend(userId: number, friendId: number) {
+    return this.userRepository.isFriend(userId, friendId);
+  }
 }
