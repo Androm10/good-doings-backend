@@ -137,6 +137,17 @@ export class UserRepository implements IUserRepository {
     return result;
   }
 
+  async isFriend(userId: number, friendId: number) {
+    const junction = await this.usersJunctionModel.findOne({
+      where: {
+        userId,
+        friendId,
+      },
+    });
+
+    return !!junction;
+  }
+
   async getAll(filter: any, limit?: number, page?: number) {
     const { take, skip } = calculatePagination(limit, page);
 
@@ -152,7 +163,7 @@ export class UserRepository implements IUserRepository {
       skip,
     });
     const result = {
-      result: users.map((u) => u as UserEntity),
+      result: users.map((u) => new UserEntity(u)),
       limit: take,
       page: page,
       pages: Math.ceil(count / take),
@@ -178,7 +189,7 @@ export class UserRepository implements IUserRepository {
     const user = await this.userModel.findOne({ where: { id } });
 
     if (!user) {
-      return null;
+      throw new BadRequestException(`No user with id ${id}`);
     }
 
     const updated = await this.userModel.save({ id: user.id, ...data });

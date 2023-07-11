@@ -15,6 +15,7 @@ export class DoingModel {
   @Column()
   description: string;
 
+  @Column()
   userId: number;
 
   @ManyToOne(() => UserModel, (user) => user.doings)

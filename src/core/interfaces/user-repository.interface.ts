@@ -12,4 +12,5 @@ export interface IUserRepository extends IRepository<UserEntity> {
     limit?: number,
     page?: number,
   ): Promise<Paginated<UserEntity>>;
+  isFriend(userId: number, friendId: number): Promise<boolean>;
 }
