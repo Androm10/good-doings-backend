@@ -7,9 +7,9 @@
 $ pnpm install
 ```
 
-## Env
- # create env files (.dev.env, .prod.env, .env)
- # add env params (for example):
+# Env
+ create env files (.dev.env, .prod.env, .env)
+ ## add env params (for example):
     DB_DIAL=postgres
     DB_HOST=postgres
     DB_PORT=5432
@@ -19,22 +19,22 @@ $ pnpm install
     PORT=3000
     REDIS_HOST=redis
     REDIS_PORT=6379
- # also can add
+ ## also can add
     AUTH_SECRET
     AUTH_EXPIRES
     AUTH_REFRESH_SECRET
     AUTH_REFRESH_EXPIRES
 
-## Docker
-  # Run only services by 
+# Docker
+  ## Run only services by 
   ```bash
   $ docker compose -f docker-compose-services.yml up
   ```
-  # Run with application by
+  ## Run with application by
   ```bash
   $ docker compose up --build
   ```
-## Running the app
+# Running the app
 
 ```bash
 
